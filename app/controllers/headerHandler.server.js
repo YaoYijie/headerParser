@@ -1,10 +1,10 @@
 
 function headerHandler() {
   this.headerParser = function(req, res) {
-    var localIp = req.connection.remoteAddress;
+    var localIp = req.get('x-forwarded-for');
     var language = req.get('Accept-Language').split(',')[0];
     var agent = req.get('User-Agent').match(/\(.*?\)/g)[0].slice(1, -1);
-    console.log(language);
+    console.log(localIp);
 
     var outObj = {
       ipaddress: localIp,

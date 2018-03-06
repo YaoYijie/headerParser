@@ -1,7 +1,7 @@
 
 function headerHandler() {
   this.headerParser = function(req, res) {
-    var localIp = req.connection.localAddress;
+    var localIp = req.connection.remoteAddress;
     var language = req.get('Accept-Language').split(',')[0];
     var agent = req.get('User-Agent').match(/\(.*?\)/g)[0].slice(1, -1);
     console.log(language);
